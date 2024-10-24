@@ -1,7 +1,10 @@
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useSearch } from "../../Context/useSearch";
 
 const Navbar = () => {
+  const { setIsModelOpen, IsModelOpen } = useSearch();
+
   return (
     <nav className="relative container mx-auto py-6">
       <div className="flex items-center justify-between text-primary">
@@ -16,10 +19,13 @@ const Navbar = () => {
           </div>
         </Link>
 
-        <div className="flex items-center space-x-4 border-b-2 border-primary cursor-pointer">
+        <button
+          onClick={() => setIsModelOpen(!IsModelOpen)}
+          className="flex items-center space-x-4 border-b-2 border-primary cursor-pointer"
+        >
           <h1 className="px-4 py-1">Search</h1>
           <FaSearch className="text-sm" />
-        </div>
+        </button>
 
         <div className="">
           <button className="px-4 py-1 bg-primary text-white rounded-md border border-transparent hover:bg-offwhite hover:text-primary hover:border-primary transition-all duration-300 ease-in-out">
