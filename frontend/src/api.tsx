@@ -47,3 +47,24 @@ export const getRecipe = async (id: number) => {
     console.log(error);
   }
 };
+
+export const getRecipesListByQuery = async (query: string) => {
+  const params = {
+    url: "https://tasty.p.rapidapi.com/recipes/list",
+    params: {
+      from: 0,
+      size: 12,
+      q: query,
+    },
+  };
+
+  try {
+    const data = await axios.request<RecipeResponse>({
+      ...options,
+      ...params,
+    });
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
