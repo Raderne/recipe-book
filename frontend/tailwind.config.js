@@ -11,6 +11,11 @@ export default {
     extend: {
       fontFamily: {
         sans: ["Poppins", "sans-serif"],
+        neue: ["Bebas Neue", "sans-serif"],
+      },
+      colors: {
+        offwhite: "#f3f2ec",
+        primary: "#2f5f48",
       },
     },
   },

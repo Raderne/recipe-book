@@ -1,10 +1,15 @@
+import { Outlet } from "react-router-dom";
 import "./App.css";
+import Navbar from "./Components/Navbar/Navbar";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <>
-      <h1>React App</h1>
-      <p>Open the console to see the output of the server.</p>
+      <Navbar />
+      <Outlet />
+      <ToastContainer />
     </>
   );
 }
