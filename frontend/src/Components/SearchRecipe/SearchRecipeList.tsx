@@ -7,7 +7,7 @@ type Props = {
 
 const SearchRecipeList = ({ recipes }: Props) => {
   return (
-    <div className="flex flex-col space-y-2 overflow-y-auto">
+    <div className="flex flex-col overflow-y-auto">
       {recipes?.results?.map((recipe) => (
         <SearchRecipeItem key={recipe.id} recipe={recipe} />
       ))}

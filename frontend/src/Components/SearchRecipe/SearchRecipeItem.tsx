@@ -17,7 +17,7 @@ const SearchRecipeItem = ({ recipe }: Props) => {
 
   return (
     <div
-      className="flex p-6 border-b border-primary cursor-pointer"
+      className="flex p-6 border-b border-primary cursor-pointer hover:bg-black/90 transition-all duration-300 ease-in-out"
       onClick={handleClick}
     >
       <img

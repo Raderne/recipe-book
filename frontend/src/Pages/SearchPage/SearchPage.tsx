@@ -45,13 +45,18 @@ const SearchPage = () => {
             placeholder="Search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleSearch();
+              }
+            }}
           />
           <button className="text-primary px-4" onClick={handleSearch}>
             <FaSearch className="text-2xl" />
           </button>
         </div>
 
-        <div className="w-full h-[500px] overflow-y-auto bg-black/40 rounded-xl">
+        <div className="w-full h-[500px] overflow-y-auto bg-black/60 rounded-xl">
           {!searchResult && !loading ? (
             <div className="w-full h-full flex items-center justify-center">
               <h1 className="text-white font-neue text-3xl text-pretty px-20 text-center">
