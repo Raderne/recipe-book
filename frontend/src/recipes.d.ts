@@ -12,7 +12,7 @@ export interface Recipe {
   buzz_id: any;
   canonical_id: string;
   compilations: any[];
-  cook_time_minutes: number;
+  cook_time_minutes: number | null;
   country: string;
   created_at: number;
   credits: Credit[];

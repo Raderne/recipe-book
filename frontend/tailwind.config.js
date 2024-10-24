@@ -16,6 +16,7 @@ export default {
       colors: {
         offwhite: "#f3f2ec",
         primary: "#2f5f48",
+        secondary: "#3d405b",
       },
     },
   },

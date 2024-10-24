@@ -1,5 +1,5 @@
 import axios from "axios";
-import { RecipeResponse } from "./recipies";
+import { Recipe, RecipeResponse } from "./recipes";
 
 const options = {
   method: "GET",
@@ -20,6 +20,25 @@ export const getRecipesList = async (from: number) => {
 
   try {
     const data = await axios.request<RecipeResponse>({
+      ...options,
+      ...params,
+    });
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getRecipe = async (id: number) => {
+  const params = {
+    url: "https://tasty.p.rapidapi.com/recipes/get-more-info",
+    params: {
+      id: id,
+    },
+  };
+
+  try {
+    const data = await axios.request<Recipe>({
       ...options,
       ...params,
     });

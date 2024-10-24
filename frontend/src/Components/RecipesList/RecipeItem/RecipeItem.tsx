@@ -1,4 +1,4 @@
-import { Recipe } from "../../../recipies";
+import { Recipe } from "../../../recipes";
 
 type RecipeItemProps = {
   recipe: Recipe;
@@ -13,7 +13,10 @@ const RecipeItem = ({ recipe }: RecipeItemProps) => {
         className="w-full h-[73%] object-cover object-center"
       />
       <div className="p-4 text-primary flex flex-col items-center justify-center">
-        <h3 className="text-lg font-bold text-pretty text-center line-clamp-1">
+        <h3
+          className="text-lg font-bold text-pretty text-center line-clamp-1"
+          title={recipe?.name}
+        >
           {recipe?.name}
         </h3>
         <p>-</p>

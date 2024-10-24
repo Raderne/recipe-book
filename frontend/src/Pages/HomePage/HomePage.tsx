@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import RecipesList from "../../Components/RecipesList/RecipesList";
 import { getRecipesList } from "../../api";
-import { RecipeResponse } from "../../recipies";
+import { RecipeResponse } from "../../recipes";
 import BarLoader from "react-spinners/BarLoader";
 
 const HomePage = () => {

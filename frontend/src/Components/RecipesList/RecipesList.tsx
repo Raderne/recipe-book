@@ -1,6 +1,6 @@
 // Desc: Component to display a list of recipes
 import { Link } from "react-router-dom";
-import { Recipe } from "../../recipies";
+import { Recipe } from "../../recipes";
 import RecipeItem from "./RecipeItem/RecipeItem";
 
 type RecipesListProps = {

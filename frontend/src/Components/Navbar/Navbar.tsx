@@ -7,7 +7,11 @@ const Navbar = () => {
       <div className="flex items-center justify-between text-primary">
         <Link to="/">
           <div className="flex items-center space-x-2">
-            <img src="logo.png" alt="logo" className="w-10 h-10" />
+            <img
+              src="../../../public/assets/logo.png"
+              alt="logo"
+              className="w-10 h-10"
+            />
             <h1 className="">Recipes</h1>
           </div>
         </Link>

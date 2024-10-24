@@ -1,4 +1,4 @@
-import { RecipeResponse } from "../../recipies";
+import { RecipeResponse } from "../../recipes";
 
 export const data: RecipeResponse = {
   count: 10127,
