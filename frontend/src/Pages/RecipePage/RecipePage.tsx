@@ -76,14 +76,14 @@ const RecipePage = () => {
             <h2 className="text-5xl font-black font-neue">Ingredients</h2>
             <ul className="list-disc list-inside text-3xl grid grid-cols-3">
               {recipe?.sections[0].components.map((component, index) => (
-                <li key={index}>{component.raw_text}</li>
+                <li key={index}>{component?.raw_text}</li>
               ))}
             </ul>
 
             <h2 className="text-5xl font-black font-neue">Instructions</h2>
             <ol className="list-decimal list-inside text-2xl space-y-2">
               {recipe?.instructions.map((instruction, index) => (
-                <li key={index}>{instruction.display_text}</li>
+                <li key={index}>{instruction?.display_text}</li>
               ))}
             </ol>
 
