@@ -22,5 +22,17 @@ namespace api.Mappers
                 Comments = recipe.Comments.Select(c => c.ToCommentDto()).ToList()
             };
         }
+
+        public static Recipe ToRecipeFromCreate(this CreateRecipeDto createRecipeDto)
+        {
+            return new Recipe
+            {
+                Name = createRecipeDto.Name,
+                Description = createRecipeDto.Description,
+                Thumbnail_url = createRecipeDto.Thumbnail_url,
+                Cook_time_minutes = createRecipeDto.Cook_time_minutes,
+                Num_servings = createRecipeDto.Num_servings
+            };
+        }
     }
 }
