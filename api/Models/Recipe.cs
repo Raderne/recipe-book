@@ -15,7 +15,8 @@ namespace api.Models
         public string Thumbnail_url { get; set; } = string.Empty;
         public int Cook_time_minutes { get; set; } = 0;
         public int Num_servings { get; set; } = 0;
-
+        public string AppUserId { get; set; }
+        public AppUser AppUser { get; set; }
         public List<Comment> Comments { get; set; } = new List<Comment>();
 
     }

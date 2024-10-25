@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using api.Dtos.Recipe;
+using api.Extensions;
+using api.Helpers;
 using api.Interfaces;
 using api.Mappers;
+using api.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace api.Controllers
 {
@@ -15,15 +20,18 @@ namespace api.Controllers
     public class RecipeController : ControllerBase
     {
         private readonly IRecipeRepository _recipeRepo;
-        public RecipeController(IRecipeRepository recipeRepo)
+        private readonly UserManager<AppUser> _userManager;
+        public RecipeController(IRecipeRepository recipeRepo, UserManager<AppUser> userManager)
         {
             _recipeRepo = recipeRepo;
+            _userManager = userManager;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetRecipes()
+        [Authorize]
+        public async Task<IActionResult> GetRecipes([FromQuery] QueryObject query)
         {
-            var recipes = await _recipeRepo.GetRecipesAsync();
+            var recipes = await _recipeRepo.GetRecipesAsync(query);
             var recipesDto = recipes.Select(r => r.ToRecipeDto()).ToList();
             return Ok(recipesDto);
         }
@@ -47,7 +55,13 @@ namespace api.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var recipeModel = recipeDto.ToRecipeFromCreate();
+            var username = User.GetUserName();
+            var user = await _userManager.FindByNameAsync(username);
+            if (user == null)
+                return NotFound("User not found");
+
+
+            var recipeModel = recipeDto.ToRecipeFromCreate(user.Id);
             await _recipeRepo.CreateRecipeAsync(recipeModel);
 
             return CreatedAtAction(nameof(GetRecipeById), new { id = recipeModel.Id }, recipeModel.ToRecipeDto());

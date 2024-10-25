@@ -99,6 +99,14 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors(opts =>
+{
+    opts.AllowAnyHeader()
+    .AllowAnyMethod()
+    .AllowCredentials()
+    .WithOrigins("http://localhost:5173");
+});
+
 app.MapControllers();
 
 app.Run();

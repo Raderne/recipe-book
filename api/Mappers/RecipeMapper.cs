@@ -19,11 +19,12 @@ namespace api.Mappers
                 Thumbnail_url = recipe.Thumbnail_url,
                 Cook_time_minutes = recipe.Cook_time_minutes,
                 Num_servings = recipe.Num_servings,
+                AppUserId = recipe.AppUserId,
                 Comments = recipe.Comments.Select(c => c.ToCommentDto()).ToList()
             };
         }
 
-        public static Recipe ToRecipeFromCreate(this CreateRecipeDto createRecipeDto)
+        public static Recipe ToRecipeFromCreate(this CreateRecipeDto createRecipeDto, string appUserId)
         {
             return new Recipe
             {
@@ -31,7 +32,8 @@ namespace api.Mappers
                 Description = createRecipeDto.Description,
                 Thumbnail_url = createRecipeDto.Thumbnail_url,
                 Cook_time_minutes = createRecipeDto.Cook_time_minutes,
-                Num_servings = createRecipeDto.Num_servings
+                Num_servings = createRecipeDto.Num_servings,
+                AppUserId = appUserId
             };
         }
     }

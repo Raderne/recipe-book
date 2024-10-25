@@ -5,16 +5,19 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SearchPage from "./Pages/SearchPage/SearchPage";
 import { SearchProvider } from "./Context/useSearch";
+import { UserProvider } from "./Context/useAuth";
 
 function App() {
   return (
     <>
-      <SearchProvider>
-        <SearchPage />
-        <Navbar />
-      </SearchProvider>
-      <Outlet />
-      <ToastContainer />
+      <UserProvider>
+        <SearchProvider>
+          <SearchPage />
+          <Navbar />
+        </SearchProvider>
+        <Outlet />
+        <ToastContainer position="bottom-right" />
+      </UserProvider>
     </>
   );
 }

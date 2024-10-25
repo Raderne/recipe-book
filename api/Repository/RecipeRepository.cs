@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using api.Data;
 using api.Dtos.Recipe;
+using api.Helpers;
 using api.Interfaces;
 using api.Models;
 using Microsoft.EntityFrameworkCore;
@@ -48,7 +49,7 @@ namespace api.Repository
 
         public Task<Recipe?> GetRecipeByIdAsync(int id)
         {
-            var recipe = _context.Recipes.Include(c => c.Comments).FirstOrDefaultAsync(x => x.Id == id);
+            var recipe = _context.Recipes.Include(c => c.Comments).ThenInclude(u => u.AppUser).FirstOrDefaultAsync(x => x.Id == id);
 
             if (recipe == null)
             {
@@ -58,9 +59,16 @@ namespace api.Repository
             return recipe;
         }
 
-        public Task<List<Recipe>> GetRecipesAsync()
+        public Task<List<Recipe>> GetRecipesAsync(QueryObject query)
         {
-            return _context.Recipes.Include(c => c.Comments).ToListAsync();
+            var recipes = _context.Recipes.Include(c => c.Comments).ThenInclude(u => u.AppUser).AsQueryable();
+
+            if (query.userId != null)
+            {
+                recipes = recipes.Where(x => x.AppUserId == query.userId);
+            }
+
+            return recipes.ToListAsync();
         }
 
         public async Task<Recipe?> UpdateRecipeAsync(int id, UpdateRecipeRequestDto recipeDto)

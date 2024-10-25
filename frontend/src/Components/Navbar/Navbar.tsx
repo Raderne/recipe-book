@@ -1,9 +1,11 @@
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useSearch } from "../../Context/useSearch";
+import { useAuth } from "../../Context/useAuth";
 
 const Navbar = () => {
   const { setIsModelOpen, IsModelOpen } = useSearch();
+  const { isLoggedIn, user, logout } = useAuth();
 
   return (
     <nav className="relative container mx-auto py-6">
@@ -27,11 +29,29 @@ const Navbar = () => {
           <FaSearch className="text-sm" />
         </button>
 
-        <div className="">
-          <button className="px-4 py-1 bg-primary text-white rounded-md border border-transparent hover:bg-offwhite hover:text-primary hover:border-primary transition-all duration-300 ease-in-out">
-            Account
-          </button>
-        </div>
+        {isLoggedIn() ? (
+          <div className="flex items-center space-x-4">
+            <h1>
+              Welcome,{" "}
+              <span className="font-bold underline">{user?.userName}</span>
+            </h1>
+            <button
+              onClick={logout}
+              className="px-4 py-1 bg-primary text-white rounded-md border border-transparent hover:bg-offwhite hover:text-primary hover:border-primary transition-all duration-300 ease-in-out"
+            >
+              Logout
+            </button>
+          </div>
+        ) : (
+          <div className="">
+            <Link
+              to="/login"
+              className="px-4 py-1 bg-primary text-white rounded-md border border-transparent hover:bg-offwhite hover:text-primary hover:border-primary transition-all duration-300 ease-in-out"
+            >
+              Account
+            </Link>
+          </div>
+        )}
       </div>
     </nav>
   );
