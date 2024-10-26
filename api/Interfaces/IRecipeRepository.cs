@@ -15,5 +15,6 @@ namespace api.Interfaces
         Task<Recipe?> CreateRecipeAsync(Recipe recipeModel);
         Task<Recipe?> UpdateRecipeAsync(int id, UpdateRecipeRequestDto recipeDto);
         Task<Recipe?> DeleteRecipeAsync(int id);
+        Task<bool> RecipeExistsAsync(string title);
     }
 }

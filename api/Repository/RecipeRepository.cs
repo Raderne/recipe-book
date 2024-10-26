@@ -71,6 +71,11 @@ namespace api.Repository
             return recipes.ToListAsync();
         }
 
+        public Task<bool> RecipeExistsAsync(string title)
+        {
+            return _context.Recipes.AnyAsync(x => x.Name == title);
+        }
+
         public async Task<Recipe?> UpdateRecipeAsync(int id, UpdateRecipeRequestDto recipeDto)
         {
             var recipe = await _context.Recipes.FirstOrDefaultAsync(x => x.Id == id);

@@ -25,13 +25,13 @@ namespace api.Controllers
             _userManager = userManager;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetComments()
+        [HttpGet("{postId:int}")]
+        public async Task<IActionResult> GetComments([FromRoute] int postId)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var comments = await _commentRepo.GetCommentsAsync();
+            var comments = await _commentRepo.GetCommentsAsync(postId);
             var commentsDto = comments.Select(c => c.ToCommentDto()).ToList();
 
             return Ok(commentsDto);

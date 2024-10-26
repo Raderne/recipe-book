@@ -18,6 +18,7 @@ namespace api.Mappers
                 Content = comment.Content,
                 CreatedOn = comment.CreatedOn,
                 CreatedBy = comment.AppUser.UserName!,
+                TastyApiId = comment.TastyApiId,
                 RecipeId = comment.RecipeId
             };
         }
@@ -28,6 +29,7 @@ namespace api.Mappers
             {
                 Title = createCommentDto.Title,
                 Content = createCommentDto.Content,
+                TastyApiId = createCommentDto.TastyApiId,
                 RecipeId = recipeId
             };
         }

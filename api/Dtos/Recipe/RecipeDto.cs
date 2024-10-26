@@ -14,6 +14,7 @@ namespace api.Dtos.Recipe
         public string Thumbnail_url { get; set; } = string.Empty;
         public int Cook_time_minutes { get; set; } = 0;
         public int Num_servings { get; set; } = 0;
+        public int TastyApiId { get; set; }
         public string AppUserId { get; set; }
         public List<CommentDto> Comments { get; set; } = new List<CommentDto>();
     }

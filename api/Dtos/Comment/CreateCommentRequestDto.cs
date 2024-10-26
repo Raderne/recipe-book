@@ -16,5 +16,7 @@ namespace api.Dtos.Comment
         [MinLength(1, ErrorMessage = "Content must be at least 1 character")]
         [MaxLength(1000, ErrorMessage = "Content must be at most 1000 characters")]
         public string Content { get; set; } = string.Empty;
+        [Required]
+        public int TastyApiId { get; set; }
     }
 }

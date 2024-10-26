@@ -20,6 +20,7 @@ namespace api.Mappers
                 Cook_time_minutes = recipe.Cook_time_minutes,
                 Num_servings = recipe.Num_servings,
                 AppUserId = recipe.AppUserId,
+                TastyApiId = recipe.TastyApiId,
                 Comments = recipe.Comments.Select(c => c.ToCommentDto()).ToList()
             };
         }
@@ -33,6 +34,7 @@ namespace api.Mappers
                 Thumbnail_url = createRecipeDto.Thumbnail_url,
                 Cook_time_minutes = createRecipeDto.Cook_time_minutes,
                 Num_servings = createRecipeDto.Num_servings,
+                TastyApiId = createRecipeDto.TastyApiId,
                 AppUserId = appUserId
             };
         }

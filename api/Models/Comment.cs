@@ -13,6 +13,7 @@ namespace api.Models
         public string Title { get; set; } = string.Empty;
         public string Content { get; set; } = string.Empty;
         public DateTime CreatedOn { get; set; } = DateTime.Now;
+        public int TastyApiId { get; set; }
         public int? RecipeId { get; set; }
         public Recipe? Recipe { get; set; }
         public string AppUserId { get; set; }

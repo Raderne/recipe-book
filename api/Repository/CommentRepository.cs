@@ -51,9 +51,9 @@ namespace api.Repository
             return comment;
         }
 
-        public Task<List<Comment>> GetCommentsAsync()
+        public Task<List<Comment>> GetCommentsAsync(int postId)
         {
-            var comments = _context.Comments.Include(c => c.AppUser).ToListAsync();
+            var comments = _context.Comments.Where(c => c.TastyApiId == postId).Include(c => c.AppUser).ToListAsync();
             if (comments == null)
             {
                 throw new Exception("No comments found");

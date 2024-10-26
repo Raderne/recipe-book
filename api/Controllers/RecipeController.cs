@@ -55,11 +55,15 @@ namespace api.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
+            if (_recipeRepo.RecipeExistsAsync(recipeDto.Name).Result)
+            {
+                return BadRequest("Recipe already exists");
+            }
+
             var username = User.GetUserName();
             var user = await _userManager.FindByNameAsync(username);
             if (user == null)
                 return NotFound("User not found");
-
 
             var recipeModel = recipeDto.ToRecipeFromCreate(user.Id);
             await _recipeRepo.CreateRecipeAsync(recipeModel);
