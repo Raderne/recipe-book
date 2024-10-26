@@ -48,12 +48,13 @@ export const UserProvider = ({ children }: Props) => {
         if (res) {
           localStorage.setItem("token", res?.data.token);
           const userObj = {
+            id: res?.data.id,
             userName: res?.data.userName,
             email: res?.data.email,
           };
           localStorage.setItem("user", JSON.stringify(userObj));
           setToken(res?.data.token);
-          setUser(userObj!);
+          setUser(userObj);
           toast.success("User registered successfully");
           navigate("/profile");
         }
@@ -67,6 +68,7 @@ export const UserProvider = ({ children }: Props) => {
         if (res) {
           localStorage.setItem("token", res?.data.token);
           const userObj = {
+            id: res?.data.id,
             userName: res?.data.userName,
             email: res?.data.email,
           };

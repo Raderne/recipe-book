@@ -6,7 +6,7 @@ const api = "http://localhost:5191/api/recipe";
 
 export const getAllRecipes = async (userId: string) => {
   try {
-    const response = await axios.get<RecipeGet>(`${api}?userId=${userId}`);
+    const response = await axios.get<RecipeGet[]>(`${api}?userId=${userId}`);
     return response;
   } catch (error) {
     handleError(error);
@@ -19,6 +19,7 @@ export const saveRecipeApi = async ({
   thumbnail_url,
   cook_time_minutes,
   num_servings,
+  tastyApiId,
 }: RecipePost) => {
   try {
     const response = await axios.post<RecipeGet>(api, {
@@ -27,7 +28,17 @@ export const saveRecipeApi = async ({
       thumbnail_url,
       cook_time_minutes,
       num_servings,
+      tastyApiId,
     });
+    return response;
+  } catch (error) {
+    handleError(error);
+  }
+};
+
+export const deleteRecipeApi = async (recipeId: number) => {
+  try {
+    const response = await axios.delete(`${api}/${recipeId}`);
     return response;
   } catch (error) {
     handleError(error);

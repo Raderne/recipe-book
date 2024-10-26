@@ -12,11 +12,7 @@ const Navbar = () => {
       <div className="flex items-center justify-between text-primary">
         <Link to="/">
           <div className="flex items-center space-x-2">
-            <img
-              src="../../../public/assets/logo.png"
-              alt="logo"
-              className="w-10 h-10"
-            />
+            <img src="/assets/logo.png" alt="logo" className="w-10 h-10" />
             <h1 className="">Recipes</h1>
           </div>
         </Link>
@@ -35,6 +31,12 @@ const Navbar = () => {
               Welcome,{" "}
               <span className="font-bold underline">{user?.userName}</span>
             </h1>
+            <Link
+              to="/profile"
+              className="px-4 py-1 bg-offwhite text-primary rounded-md border border-primary hover:bg-primary hover:text-offwhite hover:border-primary transition-all duration-300 ease-in-out"
+            >
+              Profile
+            </Link>
             <button
               onClick={logout}
               className="px-4 py-1 bg-primary text-white rounded-md border border-transparent hover:bg-offwhite hover:text-primary hover:border-primary transition-all duration-300 ease-in-out"

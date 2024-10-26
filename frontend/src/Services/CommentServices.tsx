@@ -4,9 +4,9 @@ import { CommentGet, CommentPost } from "../Models/Comment";
 
 const api = "http://localhost:5191/api/comment";
 
-export const getAllComments = async () => {
+export const getAllComments = async (postId: number) => {
   try {
-    const response = await axios.get<CommentGet[]>(api);
+    const response = await axios.get<CommentGet[]>(api + `/${postId}`);
     return response;
   } catch (error) {
     handleError(error);
