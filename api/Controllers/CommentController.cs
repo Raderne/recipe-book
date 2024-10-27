@@ -19,10 +19,12 @@ namespace api.Controllers
     {
         private readonly ICommentRepository _commentRepo;
         private readonly UserManager<AppUser> _userManager;
-        public CommentController(ICommentRepository commentRepo, UserManager<AppUser> userManager)
+        private readonly IRecipeRepository _recipeRepo;
+        public CommentController(ICommentRepository commentRepo, UserManager<AppUser> userManager, IRecipeRepository recipeRepo)
         {
             _commentRepo = commentRepo;
             _userManager = userManager;
+            _recipeRepo = recipeRepo;
         }
 
         [HttpGet("{postId:int}")]
@@ -65,6 +67,12 @@ namespace api.Controllers
             if (user == null)
             {
                 return NotFound("User not found");
+            }
+
+            var isRecipeExists = await _recipeRepo.RecipeExistsByIdAsync(id);
+            if (!isRecipeExists)
+            {
+                id = 4;
             }
 
             var comment = createCommentDto.ToCommentFromCreate(id);

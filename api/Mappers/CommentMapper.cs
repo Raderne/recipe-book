@@ -30,7 +30,7 @@ namespace api.Mappers
                 Title = createCommentDto.Title,
                 Content = createCommentDto.Content,
                 TastyApiId = createCommentDto.TastyApiId,
-                RecipeId = recipeId
+                RecipeId = recipeId,
             };
         }
     }

@@ -47,9 +47,9 @@ namespace api.Repository
             return recipe;
         }
 
-        public Task<Recipe?> GetRecipeByIdAsync(int id)
+        public async Task<Recipe?> GetRecipeByIdAsync(int id)
         {
-            var recipe = _context.Recipes.Include(c => c.Comments).ThenInclude(u => u.AppUser).FirstOrDefaultAsync(x => x.Id == id);
+            var recipe = await _context.Recipes.Include(c => c.Comments).ThenInclude(u => u.AppUser).FirstOrDefaultAsync(x => x.Id == id);
 
             if (recipe == null)
             {
@@ -59,7 +59,7 @@ namespace api.Repository
             return recipe;
         }
 
-        public Task<List<Recipe>> GetRecipesAsync(QueryObject query)
+        public async Task<List<Recipe>> GetRecipesAsync(QueryObject query)
         {
             var recipes = _context.Recipes.Include(c => c.Comments).ThenInclude(u => u.AppUser).AsQueryable();
 
@@ -68,12 +68,17 @@ namespace api.Repository
                 recipes = recipes.Where(x => x.AppUserId == query.userId);
             }
 
-            return recipes.ToListAsync();
+            return await recipes.ToListAsync();
         }
 
-        public Task<bool> RecipeExistsAsync(string title)
+        public async Task<bool> RecipeExistsAsync(string title, string userId)
         {
-            return _context.Recipes.AnyAsync(x => x.Name == title);
+            return await _context.Recipes.AnyAsync(x => x.Name == title && x.AppUserId == userId);
+        }
+
+        public async Task<bool> RecipeExistsByIdAsync(int recipeId)
+        {
+            return await _context.Recipes.AnyAsync(x => x.Id == recipeId);
         }
 
         public async Task<Recipe?> UpdateRecipeAsync(int id, UpdateRecipeRequestDto recipeDto)

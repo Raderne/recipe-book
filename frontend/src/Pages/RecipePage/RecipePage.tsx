@@ -6,7 +6,7 @@ import { FaPlay } from "react-icons/fa";
 import { getRecipe } from "../../api";
 import { getAllRecipes, saveRecipeApi } from "../../Services/RecipeServices";
 import { handleError } from "../../Helpers/ErrorHandler";
-import { RecipePost } from "../../Models/Recipe";
+import { RecipeGet, RecipePost } from "../../Models/Recipe";
 import { toast } from "react-toastify";
 import { useAuth } from "../../Context/useAuth";
 import CommentsList from "../../Components/CommentsList/CommentsList";
@@ -17,6 +17,7 @@ const RecipePage = () => {
   const [playVideo, setPlayVideo] = useState(false);
   const [recipeIsSaving, setRecipeIsSaving] = useState(false);
   const [alreadySaved, setAlreadySaved] = useState(false);
+  const [savedRecipe, setSavedRecipe] = useState<RecipeGet>();
   const { id } = useParams<{ id: string }>();
   const { isLoggedIn, user } = useAuth();
 
@@ -27,6 +28,9 @@ const RecipePage = () => {
         res?.data?.some(
           (savedRecipe) => savedRecipe.tastyApiId === Number(id)
         ) ?? false
+      );
+      setSavedRecipe(
+        res?.data?.find((savedRecipe) => savedRecipe.tastyApiId === Number(id))
       );
     };
 
@@ -64,6 +68,7 @@ const RecipePage = () => {
         toast.error("Recipe already saved");
       }
 
+      setSavedRecipe(res?.data);
       setAlreadySaved(true);
       toast.success("Recipe saved successfully");
     } catch (e: unknown) {
@@ -202,7 +207,7 @@ const RecipePage = () => {
           </div>
 
           <div className="w-1/2">
-            <CommentsList tastyApiId={Number(id)} />
+            <CommentsList tastyApiId={Number(id)} savedRecipe={savedRecipe} />
           </div>
         </div>
       </section>

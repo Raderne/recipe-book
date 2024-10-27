@@ -18,6 +18,7 @@ export const postComment = async (comment: CommentPost, id: number) => {
     const response = await axios.post<CommentGet>(`${api}/${id}`, {
       title: comment.title,
       content: comment.content,
+      tastyApiId: comment.tastyApiId,
     });
     return response;
   } catch (error) {
