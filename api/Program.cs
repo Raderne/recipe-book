@@ -88,6 +88,16 @@ builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", builder =>
+    {
+        builder.WithOrigins("https://recipe-book-kappa-five.vercel.app")
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -99,14 +109,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors(opts =>
-{
-    opts.AllowAnyHeader()
-    .AllowAnyMethod()
-    .AllowCredentials()
-    .AllowAnyOrigin()
-    .WithOrigins("http://localhost:5192");
-});
+app.UseCors("AllowFrontend");
 
 app.MapControllers();
 
