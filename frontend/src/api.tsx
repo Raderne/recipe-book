@@ -10,7 +10,6 @@ const options = {
 };
 
 export const getRecipesList = async (from: number) => {
-  console.log(import.meta.env.VITE_RECIPES_API_KEY);
   const params = {
     url: "https://tasty.p.rapidapi.com/recipes/list",
     params: {
