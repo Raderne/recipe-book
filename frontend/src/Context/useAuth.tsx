@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 type UserContextType = {
   user: UserProfile | null;
   token: string | null;
+  registeringUser: boolean;
   registerUser: (email: string, username: string, password: string) => void;
   loginUser: (username: string, password: string) => void;
   logout: () => void;
@@ -25,6 +26,7 @@ export const UserProvider = ({ children }: Props) => {
   const [token, setToken] = useState<string | null>(null);
   const [user, setUser] = useState<UserProfile | null>(null);
   const [isReady, setIsReady] = useState(false);
+  const [registeringUser, setRegisteringUser] = useState(false);
 
   useEffect(() => {
     const user = localStorage.getItem("user");
@@ -43,6 +45,7 @@ export const UserProvider = ({ children }: Props) => {
     email: string,
     password: string
   ) => {
+    setRegisteringUser(true);
     await RegisterAPI(username, email, password)
       .then((res) => {
         if (res) {
@@ -60,6 +63,8 @@ export const UserProvider = ({ children }: Props) => {
         }
       })
       .catch(() => toast.warning("server error"));
+
+    setRegisteringUser(false);
   };
 
   const loginUser = async (username: string, password: string) => {
@@ -99,6 +104,7 @@ export const UserProvider = ({ children }: Props) => {
       value={{
         user,
         token,
+        registeringUser,
         loginUser,
         registerUser,
         logout,

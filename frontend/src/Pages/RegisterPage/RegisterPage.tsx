@@ -17,7 +17,7 @@ const validation = Yup.object().shape({
 });
 
 const RegisterPage = () => {
-  const { registerUser } = useAuth();
+  const { registerUser, registeringUser } = useAuth();
   const {
     register,
     handleSubmit,
@@ -89,7 +89,7 @@ const RegisterPage = () => {
                 type="submit"
                 className="w-full px-4 py-2 bg-primary text-white rounded-md hover:bg-offwhite hover:text-primary hover:border-primary transition-all duration-300 ease-in-out"
               >
-                Register
+                {registeringUser ? "Registering..." : "Register"}
               </button>
             </div>
             <span className="block text-center mt-4 text-gray-600">- or -</span>

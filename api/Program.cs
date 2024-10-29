@@ -104,7 +104,8 @@ app.UseCors(opts =>
     opts.AllowAnyHeader()
     .AllowAnyMethod()
     .AllowCredentials()
-    .WithOrigins("http://localhost:5173");
+    .AllowAnyOrigin()
+    .WithOrigins("http://localhost:5192");
 });
 
 app.MapControllers();
