@@ -13,11 +13,12 @@ const SearchPage = () => {
 
   useEffect(() => {
     if (IsModelOpen) {
+      document.body.style.height = "100dvh";
       document.body.style.overflow = "hidden";
-      document.body.style.height = "100vh";
     } else {
       document.body.style.overflow = "auto";
       document.body.style.height = "auto";
+      document.body.style.width = "auto";
     }
   }, [IsModelOpen]);
 
@@ -37,11 +38,11 @@ const SearchPage = () => {
 
   return (
     <div className="h-screen w-screen bg-black/70 absolute flex items-center justify-center z-50">
-      <div className="flex flex-col max-w-[35vw] w-full space-y-6">
+      <div className="flex flex-col max-w-[35vw] max-sm:max-w-[80dvw] w-full space-y-6">
         <div className="bg-black rounded-xl flex items-center">
           <input
             type="text"
-            className="bg-transparent flex-1 px-6 py-4 text-white text-lg focus:outline-none"
+            className="bg-transparent w-full flex-1 max-sm:flex-auto md:px-6 py-4 max-sm:pl-6 max-sm:pr-0 text-white text-lg focus:outline-none"
             placeholder="Search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
@@ -51,7 +52,10 @@ const SearchPage = () => {
               }
             }}
           />
-          <button className="text-primary px-4" onClick={handleSearch}>
+          <button
+            className="text-primary border-l border-dashed border-primary p-4"
+            onClick={handleSearch}
+          >
             <FaSearch className="text-2xl" />
           </button>
         </div>
