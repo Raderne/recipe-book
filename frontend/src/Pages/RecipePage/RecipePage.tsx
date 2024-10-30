@@ -91,7 +91,7 @@ const RecipePage = () => {
           <div className="flex flex-col items-center p-4 text-offwhite space-y-6 pb-10">
             <div className="text-center">
               <h1
-                className="text-9xl line-clamp-1 font-black font-neue"
+                className="text-9xl max-sm:text-4xl line-clamp-1 font-black font-neue"
                 title={recipe?.name}
               >
                 {recipe?.name}
@@ -105,7 +105,7 @@ const RecipePage = () => {
               </p>
             </div>
 
-            <div className="px-40 w-full">
+            <div className="px-40 max-sm:px-0 w-full">
               <div className="relative w-full aspect-video bg-black rounded-lg overflow-hidden">
                 {!playVideo ? (
                   <div>
@@ -134,9 +134,9 @@ const RecipePage = () => {
               </div>
             </div>
 
-            <div className="w-full px-4 space-y-4">
+            <div className="w-full px-4 max-sm:px-0 space-y-4">
               <h2 className="text-5xl font-black font-neue">Ingredients</h2>
-              <ul className="list-disc list-inside text-3xl grid grid-cols-3">
+              <ul className="list-disc list-inside text-3xl grid lg:grid-cols-3 md:grid-cols-2">
                 {recipe?.sections[0].components.map((component, index) => (
                   <li key={index}>{component?.raw_text}</li>
                 ))}
@@ -150,7 +150,7 @@ const RecipePage = () => {
               </ol>
 
               <h2 className="text-5xl font-black font-neue">Nutrition</h2>
-              <ul className="list-disc list-inside text-3xl grid grid-cols-3">
+              <ul className="list-disc list-inside text-3xl grid lg:grid-cols-3 md:grid-cols-2">
                 {recipe?.nutrition?.calories && (
                   <li>Calories: {recipe?.nutrition.calories}</li>
                 )}
@@ -198,15 +198,15 @@ const RecipePage = () => {
         )}
       </section>
 
-      <section className="container mx-auto bg-secondary mb-10 rounded-lg mt-10 py-10">
+      <section className="container mx-auto bg-secondary my-10 rounded-lg py-10">
         <div className="flex flex-col items-center py-4 px-8 text-offwhite space-y-6">
           <div className="text-center">
-            <h1 className="text-7xl line-clamp-1 font-black font-neue">
+            <h1 className="text-7xl max-sm:text-5xl line-clamp-1 font-black font-neue">
               Comments Section
             </h1>
           </div>
 
-          <div className="w-1/2">
+          <div className="w-1/2 max-sm:w-full">
             <CommentsList tastyApiId={Number(id)} savedRecipe={savedRecipe} />
           </div>
         </div>

@@ -26,10 +26,10 @@ const HomePage = () => {
   }, [from]);
 
   return (
-    <section className="relative container mx-auto mb-10">
+    <section className="relative container mx-auto mb-10 max-sm:px-4">
       <div className="w-full py-5">
-        <h1 className="text-7xl pb-6 font-black font-neue text-primary text-pretty border-b-2 border-primary">
-          Discover Delicious Recipes
+        <h1 className="text-7xl max-sm:text-5xl pb-6 max-sm:pb-2 font-black font-neue text-primary text-pretty border-b-2 border-primary">
+          Discover Delicious Recipes Now
         </h1>
       </div>
 
