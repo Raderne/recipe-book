@@ -2,7 +2,7 @@ import axios from "axios";
 import { handleError } from "../Helpers/ErrorHandler";
 import { CommentGet, CommentPost } from "../Models/Comment";
 
-const api = "http://localhost:5191/api/comment";
+const api = "https://recipescsharpapi.azurewebsites.net/api/comment";
 
 export const getAllComments = async (postId: number) => {
   try {

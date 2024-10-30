@@ -2,7 +2,7 @@ import axios from "axios";
 import { handleError } from "../Helpers/ErrorHandler";
 import { RecipeGet, RecipePost } from "../Models/Recipe";
 
-const api = "http://localhost:5191/api/recipe";
+const api = "https://recipescsharpapi.azurewebsites.net/api/recipe";
 
 export const getAllRecipes = async (userId: string) => {
   try {
