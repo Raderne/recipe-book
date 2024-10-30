@@ -14,10 +14,14 @@ const SavedRecipes = ({ recipes: initialRecipes }: RecipesListProps) => {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 max-sm:px-4">
       {recipes?.map((recipe) => (
         <div key={recipe.id}>
-          <SavedRecipeItem recipe={recipe} onDelete={handleDelete} key={recipe.id} />
+          <SavedRecipeItem
+            recipe={recipe}
+            onDelete={handleDelete}
+            key={recipe.id}
+          />
         </div>
       ))}
     </div>

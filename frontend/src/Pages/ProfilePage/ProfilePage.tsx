@@ -22,9 +22,9 @@ const ProfilePage = () => {
   }, [user?.id]);
 
   return (
-    <section className="relative container mx-auto mb-10">
-      <div className="w-full py-5">
-        <h1 className="text-7xl pb-6 font-black font-neue text-primary text-pretty border-b-2 border-primary">
+    <section className="relative container mx-auto mb-10 max-sm:px-4">
+      <div className="w-full py-5 max-sm:py-3">
+        <h1 className="text-7xl max-sm:text-5xl pb-6 font-black font-neue text-primary text-pretty border-b-2 border-primary">
           Your Recipes
         </h1>
       </div>
