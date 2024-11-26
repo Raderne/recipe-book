@@ -4644,11 +4644,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\msrel\\dev\\projects\\ASP.NET\\recipeBook\\api\\api.csproj",
+      "projectUniqueName": "C:\\Users\\msrel\\dev\\projects\\ASP.NET\\recipeBook\\api\\api.csproj",
       "projectName": "api",
-      "projectPath": "c:\\Users\\msrel\\dev\\projects\\ASP.NET\\recipeBook\\api\\api.csproj",
+      "projectPath": "C:\\Users\\msrel\\dev\\projects\\ASP.NET\\recipeBook\\api\\api.csproj",
       "packagesPath": "C:\\Users\\msrel\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\msrel\\dev\\projects\\ASP.NET\\recipeBook\\api\\obj\\",
+      "outputPath": "C:\\Users\\msrel\\dev\\projects\\ASP.NET\\recipeBook\\api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -4751,7 +4751,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
